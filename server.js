@@ -46,16 +46,25 @@ app.get('/movies', async (req, res) => {
 });
 app.post('/api/login', async (req, res) => {
     const { name, pass } = req.body;
+
     try {
-        const usuario = await User.findOne({
-            name: name,
-            contra: pass
-        });
+        const usuario = await User.findOne(
+            { name: name, contra: pass },
+            '_id rank'
+        );
+
         if (usuario) {
-            res.json({ success: true, user: usuario });
+            res.json({
+                success: true,
+                user: {
+                    id: usuario._id,
+                    rank: usuario.rank
+                }
+            });
         } else {
             res.json({ success: false, message: 'Credenciales incorrectas' });
         }
+
     } catch (error) {
         res.status(500).json({ error: 'Error en el servidor' });
     }

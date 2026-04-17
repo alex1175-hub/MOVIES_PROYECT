@@ -16,7 +16,14 @@ formulario.addEventListener('submit', async function(event) {
     });
     const resultado = await respuesta.json();
     if (resultado.success) {
-        alert(`Login correcto\nUsuario: ${resultado.user.name}\nRango: ${resultado.user.rank}`);
+        localStorage.setItem("id", resultado.user.id);
+         if (resultado.user.rank === 'admin' || resultado.user.rank === 'god') {
+            window.location.href = '/admin.html';
+        } else if (resultado.user.rank === 'resen') {
+            window.location.href = '/resena.html';
+        } else if (resultado.user.rank === 'user') {
+            window.location.href = '/user.html';
+        }
     } else {
         alert('Correo o contraseña incorrectos');
     }

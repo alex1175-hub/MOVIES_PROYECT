@@ -4,7 +4,7 @@ fetch('/movies')
     .then(data => {
         const contenedor = document.getElementById('preview');
 
-        data.forEach(movie => {
+        data.slice(0, 10).forEach(movie => {
 
             // Crear formulario
             const form = document.createElement('form');
