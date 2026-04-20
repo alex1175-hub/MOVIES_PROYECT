@@ -16,6 +16,7 @@ formulario.addEventListener('submit', async function(event) {
     });
     const resultado = await respuesta.json();
     if (resultado.success) {
+        alert('bienvenido');
         localStorage.setItem("id", resultado.user.id);
          if (resultado.user.rank === 'admin' || resultado.user.rank === 'god') {
             window.location.href = '/admin.html';
@@ -28,3 +29,4 @@ formulario.addEventListener('submit', async function(event) {
         alert('Correo o contraseña incorrectos');
     }
 });
+ 

@@ -1,0 +1,14 @@
+mariabd
+encender:
+net start MariaDB
+apagar:
+net stop MariaDB
+
+node
+encender:
+node server.js
+apagar:
+ctrl + c
+
+enlace:
+//localhost:8080

@@ -44,6 +44,7 @@ app.get('/movies', async (req, res) => {
         res.status(500).json({ error: 'Error al obtener datos' });
     }
 });
+
 app.post('/api/login', async (req, res) => {
     const { name, pass } = req.body;
 
@@ -69,6 +70,43 @@ app.post('/api/login', async (req, res) => {
         res.status(500).json({ error: 'Error en el servidor' });
     }
 });
+
+app.post('/api/registro', async (req, res) => {
+    const { name, email, pass, rank } = req.body;
+    try {
+        // Verificar si ya existe usuario
+        const existe = await User.findOne({
+            $or: [
+                { name: name },
+                { email: email }
+            ]
+        });
+        if (existe) {
+            return res.json({
+                success: false,
+                message: 'El usuario ya existe'
+            });
+        }
+        // Crear nuevo usuario
+        const nuevoUsuario = new User({
+            name: name,
+            email: email,
+            contra: pass,
+            rank: rank || 'user'
+        });
+        await nuevoUsuario.save();
+        res.json({
+            success: true,
+            message: 'Usuario registrado correctamente'
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error en el servidor'
+        });
+    }
+});
+
 // Iniciar servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);

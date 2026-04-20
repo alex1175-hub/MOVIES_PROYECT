@@ -1,27 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>servidor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor de Reseñas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <img src="/assets/TLRN_logo.png" width="150" height="75">
-        <nav>
-            <a href="login.html">
-                <button type="button">Iniciar sesion</button>
-            </a>
-            <a href="regristro.html">
-                <button type="button">Registrarse</button>
-            </a>
-        </nav>
-    </header>
-    <section>
-        <p>para buscar la reseña de una pelicula por favor registrate o inicia sesion</p>
-        <div id="preview">
-            
+<body class="bg-light">
+    <header class="p-3 bg-white shadow-sm mb-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="/assets/TLRN_logo.png" width="150" height="75" alt="Logo">
+            <nav class="d-flex gap-2">
+                <a href="login.html" class="btn btn-outline-success">Iniciar sesión</a>
+                <a href="regristro.html" class="btn btn-success">Registrarse</a>
+            </nav>
         </div>
-        <p>para ver mas reseñas de otras pelicula por favor registrate o inicia sesion</p>
-    </section>
+    </header>
+
+    <main class="container">
+        <section class="text-center mb-5">
+            <p class="lead text-muted">Explora todas las reseñas disponibles en nuestra base de datos.</p>
+            
+            <div id="preview">
+                <div class="mensaje-espera">
+                    <h3>Reseñas en Preview</h3>
+                    <p>El contenido detallado de las reseñas se cargará aquí...</p>
+                    <div class="spinner-border text-success" role="status"></div>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="js/preview.js"></script>
     <footer>
     </footer>
