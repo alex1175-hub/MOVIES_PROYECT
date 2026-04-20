@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>registro</title>
+</head>
+<body>
+    <header>
+        <img src="/assets/TLRN_logo.png" width="150" height="75">
+    </header>
+    <section>
+        <div id="cubo">
+            <form id="form_nu" name="form_n-e">
+                <h1 name="titulo"> crear nuevo usuario</h1>
+                <label>por favor ingrese el nombre de usuario:</label>
+                <input type="text" name="UN">
+                <label>por favor ingrese el email del usuario:</label>
+                <input type="email" name="EM">
+                <label>por favor ingrese la contraseña del usuario:</label>
+                <input type="text" name="PW">
+                <label>por favor seleccione el rango del usuario:</label>
+                <input type="radio" id="opc1" name="RK" value="user" checked>
+                <label for="opc1">usuario</label><br>
+                <input type="radio" id="opc2" name="RK" value="resen">
+                <label for="opc2">reseñista</label>
+                <input type="radio" id="opc3" name="RK" value="admin">
+                <label for="opc3">administrador</label>
+                <button type="submit">registrarse</button>
+            </form>
+        </div>
+    </section>
+    <script type="module" src="js/admin_nu.js"></script>
+</body>
+</html> 

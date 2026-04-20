@@ -10,7 +10,7 @@ fetch('/movies')
             contenedor.innerHTML = ''; 
 
             // 2. Recorremos TODA la base de datos
-            data.slice(0, 10).forEach(movie => {
+            data.forEach(movie => {
                 // Creamos el elemento de la tarjeta
                 const card = document.createElement('div');
                 card.className = 'movie-card';

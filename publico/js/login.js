@@ -18,7 +18,7 @@ formulario.addEventListener('submit', async function(event) {
     if (resultado.success) {
         alert('bienvenido');
         localStorage.setItem("id", resultado.user.id);
-         if (resultado.user.rank === 'admin' || resultado.user.rank === 'god') {
+         if (resultado.user.rank === 'admin' || resultado.user.rank === 'master') {
             window.location.href = '/admin.html';
         } else if (resultado.user.rank === 'resen') {
             window.location.href = '/resena.html';

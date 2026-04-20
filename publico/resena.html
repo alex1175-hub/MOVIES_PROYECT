@@ -8,26 +8,36 @@
         <img src="/assets/TLRN_logo.png" width="150" height="75">
         <nav>
             <h3>menu del Reseñista</h3>
-            <a href="reseña_n.html">
-                <button type="button">nueva re</button>
-            </a>
-            <a href="reseña_e.html">
-                <button type="button">Registrarse</button>
-            </a>
-            <a href="reseña_b.html">
-                <button type="button">Iniciar sesion</button>
-            </a>
-            <button type="button" id="logout">cerrar sesion</button>
+            <button onclick="window.history.back()">
+                Volver atrás
+            </button>
         </nav>
     </header>
     <section>
-        <div id="preview">
-            
+        <div id="resena">
+            <h2 id="titulo"></h2>
+            <br>
+            <img src="" id="imagen">
+            <br>
+            <label id="">Creada en el año:</label>
+            <label id="anio"></label>
+            <br>
+            <label id="">Del director</label>
+            <label id="direc"></label>
+            <br>
+            <h5>reseña:</h5>
+            <br>
+            <p id="text"> </p>
+            <br>
+            <label>reparto:</label>
+            <ul id="actor">
+
+            </ul>
+            <br>
         </div>
     </section>
-    <script src="js/preview.js"></script>
-    <script src="js/logout.js"></script>
+    <script src="js/resena_carga.js"></script>
     <footer>
     </footer>
 </body>
-</html>l
+</html>
