@@ -1,43 +1,56 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-    <title>servidor</title>
+    <title>CRUD Películas</title>
 </head>
 <body>
-    <header>
-        <img src="/assets/TLRN_logo.png" width="150" height="75">
-        <nav>
-            <h3>menu del Reseñista</h3>
-            <button onclick="window.history.back()">
-                Volver atrás
-            </button>
-        </nav>
-    </header>
-    <section>
-        <div id="resena">
-            <h2 id="titulo"></h2>
-            <br>
-            <img src="" id="imagen">
-            <br>
-            <label id="">Creada en el año:</label>
-            <label id="anio"></label>
-            <br>
-            <label id="">Del director</label>
-            <label id="direc"></label>
-            <br>
-            <h5>reseña:</h5>
-            <br>
-            <p id="text"> </p>
-            <br>
-            <label>reparto:</label>
-            <ul id="actor">
 
-            </ul>
-            <br>
-        </div>
-    </section>
-    <script src="js/resena_carga.js"></script>
-    <footer>
-    </footer>
+<header>
+    <h2>Gestión de Reseñas</h2>
+    <button onclick="window.history.back()">Volver atrás</button>
+</header>
+
+<section>
+
+    <h3>Formulario de Reseña</h3>
+
+    <label>Nombre:</label><br>
+    <input type="text" id="movieName"><br><br>
+
+    <label>Año:</label><br>
+    <input type="number" id="movieYear"><br><br>
+
+    <label>Director:</label><br>
+    <input type="text" id="movieDirector"><br><br>
+
+    <label>Reseña:</label><br>
+    <textarea id="movieReview"></textarea><br><br>
+
+    <label>Actores (separados por coma):</label><br>
+    <input type="text" id="movieActors"><br><br>
+
+    <!-- BOTONES -->
+    <button onclick="guardarResena()">Crear</button>
+    <button onclick="editarDesdeFormulario()">Editar</button>
+    <button onclick="eliminarResena()">Eliminar</button>
+    <button onclick="guardarCambios()">Guardar cambios</button>
+<h3>Buscar película</h3>
+
+<input type="text" id="nombreBuscar" placeholder="Escribe el nombre de la película">
+<button onclick="buscarYEditar()">Buscar</button>
+
+<hr>
+
+</section>
+
+<div id="editarBox" style="display:none;">
+        <h3>Buscar película para editar</h3>
+
+        <input type="text" id="nombreBuscar" placeholder="Nombre de la película">
+        <button onclick="buscarYEditar()">Buscar</button>
+    </div>
+
+<script src="js/resena.js"></script>
+
 </body>
 </html>

@@ -6,6 +6,7 @@ const Rtext = document.getElementById('text');
 const Ractor = document.getElementById('actor');
 
 const id_r = localStorage.getItem('id_pr');
+localStorage.removeItem('id_pr');
 
 if (!id_r) {
     console.log("No se encontró el ID de la película");

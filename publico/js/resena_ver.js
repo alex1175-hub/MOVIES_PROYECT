@@ -4,6 +4,6 @@ contenedor.addEventListener('click', async function(event) {
         const Did = event.target.value;
         //console.log(Did);
         localStorage.setItem('id_pr', Did);
-        window.location.href = '/resena.html';
+        window.location.href = '/resena_v.html';
     }
 });
