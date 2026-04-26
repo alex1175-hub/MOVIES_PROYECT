@@ -1,33 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>servidor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Usuarios - TLRN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body>
-    <header>
-        <img src="/assets/TLRN_logo.png" width="150" height="75">
-        <nav>
-            <h3>menu del Reseñista</h3>
-            <a href="reseña_n.html">
-                <button type="button">nueva re</button>
-            </a>
-            <a href="reseña_e.html">
-                <button type="button">Registrarse</button>
-            </a>
-            <a href="reseña_b.html">
-                <button type="button">Iniciar sesion</button>
-            </a>
-            <a href="">
-                <button type="button">Registrarse</button>
-            </a>
-            <button type="button" id="logout">cerrar sesion</button>
-        </nav>
-    </header>
-    <section>
+<body class="bg-light">
 
-    </section>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-white vh-100 shadow-sm position-fixed border-end">
+                <div class="position-sticky pt-4 px-3 d-flex flex-column h-100">
+                    <div class="text-center mb-4">
+                        <img src="/assets/TLRN_logo.png" width="140" alt="Logo" class="img-fluid mb-2">
+                        <hr class="my-3">
+                        <h6 class="text-uppercase text-muted fw-bold small">Gestión de Usuarios</h6>
+                    </div>
+
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="reseña_n.html" class="nav-link link-dark d-flex align-items-center gap-2 mb-2">
+                                <i class="bi bi-person-plus-fill text-success fs-5"></i> Agregar usuario
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reseña_e.html" class="nav-link link-dark d-flex align-items-center gap-2 mb-2">
+                                <i class="bi bi-person-gear text-primary fs-5"></i> Editar usuario
+                            </a>
+                        </li>
+                        <li>
+                            <a href="reseña_b.html" class="nav-link link-danger d-flex align-items-center gap-2 mb-2">
+                                <i class="bi bi-person-dash-fill fs-5"></i> Eliminar usuario
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="pb-4 mt-auto">
+                        <a href="index.html" class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2 rounded-3 py-2">
+                            <i class="bi bi-box-arrow-left"></i> Salir
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-4">
+                <header class="mb-4 border-bottom pb-3">
+                    <h2 class="fw-bold text-dark">Administrador de Usuarios</h2>
+                    <p class="text-muted">Control total de cuentas y permisos del servidor.</p>
+                </header>
+
+                <section class="card border-0 shadow-sm overflow-hidden">
+                    <div id="preview" class="card-body p-0">
+                        <div class="d-flex flex-column align-items-center justify-content-center py-5 text-muted">
+                            <div class="spinner-border text-success mb-3" role="status"></div>
+                            <p class="fw-medium">Cargando base de datos de usuarios...</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
     <script src="js/preview.js"></script>
-    <script src="js/logout.js"></script>
-    <footer>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>

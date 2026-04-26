@@ -1,50 +1,77 @@
-// Función para cargar todas los usuarios desde el servidor
-fetch('/users')
-    .then(response => response.json())
-    .then(data => {
-        const contenedor = document.getElementById('preview_usuarios');
+let contenedorUsuarios = document.getElementById('preview_usuarios');
 
-        // Si el servidor responde con datos
-        if (data && data.length > 0) {
-            // 1. Quitamos el mensaje de "Reseñas en Preview"
-            contenedor.innerHTML = ''; 
+// Estado de filtro (si después agregas búsqueda de usuarios)
+let filtroUsuariosActivo = false;
 
-            // 2. Recorremos TODA la base de datos
-            data.forEach(USERS => {
-                // Creamos el elemento de la tarjeta
-                const card = document.createElement('div');
-                card.className = 'USERS-card';
+// =====================================
+// CREAR TARJETAS DE USUARIOS
+// =====================================
+function crearUsuarios(data) {
+    contenedorUsuarios.innerHTML = '';
 
-                const NAME = document.createElement('h4');
-                NAME.textContent = USERS.name;
+    if (!data || data.length === 0) {
+        contenedorUsuarios.innerHTML = `
+            <div class="mensaje-espera">
+                <p>No hay usuarios disponibles actualmente.</p>
+            </div>
+        `;
+        return;
+    }
 
-                const boton_e = document.createElement('button');
-                boton_e.className = 'btn btn-success w-100 mt-auto';
-                boton_e.textContent = 'editar usuario';
-                boton_e.name = "btnEU";
-                boton_e.value = USERS._id;
+    data.forEach(USERS => {
 
-                const boton_d = document.createElement('button');
-                boton_d.className = 'btn btn-success w-100 mt-auto';
-                boton_d.textContent = 'borrar usuario';
-                boton_d.name = "btnDU";
-                boton_d.value = USERS._id;
+        const card = document.createElement('div');
+        card.className = 'USERS-card';
 
-                // Ensamblar la tarjeta
+        const NAME = document.createElement('h4');
+        NAME.textContent = USERS.name;
 
-                card.appendChild(NAME);
-                card.appendChild(boton_e);
-                card.appendChild(boton_d);
+        const boton_e = document.createElement('button');
+        boton_e.className = 'btn btn-success w-100 mt-auto';
+        boton_e.textContent = 'editar usuario';
+        boton_e.name = "btnEU";
+        boton_e.value = USERS._id;
 
-                // Agregar al contenedor principal
-                contenedor.appendChild(card);
-            });
-        } else {
-            contenedor.innerHTML = '<div class="mensaje-espera"><p>No hay reseñas disponibles actualmente.</p></div>';
-        }
-    })
-    .catch(error => {
-        console.error('Error al conectar con el servidor:', error);
-        const contenedor = document.getElementById('preview_usuarios');
-        contenedor.innerHTML = '<div class="mensaje-espera text-danger"><p>Error al cargar los datos del servidor.</p></div>';
+        const boton_d = document.createElement('button');
+        boton_d.className = 'btn btn-success w-100 mt-auto';
+        boton_d.textContent = 'borrar usuario';
+        boton_d.name = "btnDU";
+        boton_d.value = USERS._id;
+
+        card.appendChild(NAME);
+        card.appendChild(boton_e);
+        card.appendChild(boton_d);
+
+        contenedorUsuarios.appendChild(card);
     });
+}
+
+// =====================================
+// CARGAR USUARIOS
+// =====================================
+function cargarUsuarios() {
+
+    // ❗ NO actualizar si hay filtro activo
+    if (filtroUsuariosActivo) return;
+
+    fetch('/users')
+        .then(response => response.json())
+        .then(data => {
+            crearUsuarios(data);
+        })
+        .catch(error => {
+            console.error('Error al conectar con el servidor:', error);
+
+            contenedorUsuarios.innerHTML = `
+                <div class="mensaje-espera text-danger">
+                    <p>Error al cargar los datos del servidor.</p>
+                </div>
+            `;
+        });
+}
+
+// =====================================
+// CARGA INICIAL + AUTO REFRESH 5s
+// =====================================
+cargarUsuarios();
+setInterval(cargarUsuarios, 5000);

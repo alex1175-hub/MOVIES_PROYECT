@@ -1,56 +1,198 @@
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>CRUD Películas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Películas - TLRN</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body>
 
-<header>
-    <h2>Gestión de Reseñas</h2>
-    <button onclick="window.history.back()">Volver atrás</button>
-</header>
+<body class="bg-light d-flex flex-column vh-100">
 
-<section>
+    <header class="p-3 bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="/assets/TLRN_logo.png" width="130" height="65" alt="Logo" class="img-fluid">
 
-    <h3>Formulario de Reseña</h3>
+            <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2">
+                <i class="bi bi-arrow-left"></i> Volver atrás
+            </button>
+        </div>
+    </header>
 
-    <label>Nombre:</label><br>
-    <input type="text" id="movieName"><br><br>
+    <main class="container flex-grow-1 py-5">
+        <div class="row justify-content-center g-4">
 
-    <label>Año:</label><br>
-    <input type="number" id="movieYear"><br><br>
+            <!-- FORMULARIO PRINCIPAL -->
+            <div class="col-12 col-lg-7">
+                <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
 
-    <label>Director:</label><br>
-    <input type="text" id="movieDirector"><br><br>
+                    <h1 class="h3 mb-4 fw-bold text-dark text-uppercase text-center">
+                        Gestión de Reseñas
+                    </h1>
 
-    <label>Reseña:</label><br>
-    <textarea id="movieReview"></textarea><br><br>
+                    <div class="row">
 
-    <label>Actores (separados por coma):</label><br>
-    <input type="text" id="movieActors"><br><br>
+                        <div class="col-md-8 mb-3">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Nombre de la película:
+                            </label>
 
-    <!-- BOTONES -->
-    <button onclick="guardarResena()">Crear</button>
-    <button onclick="editarDesdeFormulario()">Editar</button>
-    <button onclick="eliminarResena()">Eliminar</button>
-    <button onclick="guardarCambios()">Guardar cambios</button>
-<h3>Buscar película</h3>
+                            <input
+                                type="text"
+                                id="movieName"
+                                class="form-control bg-light border-0 shadow-sm"
+                                placeholder="Ej. El Padrino">
+                        </div>
 
-<input type="text" id="nombreBuscar" placeholder="Escribe el nombre de la película">
-<button onclick="buscarYEditar()">Buscar</button>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Año:
+                            </label>
 
-<hr>
+                            <input
+                                type="number"
+                                id="movieYear"
+                                class="form-control bg-light border-0 shadow-sm"
+                                placeholder="2024">
+                        </div>
 
-</section>
+                        <div class="col-12 mb-3">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Director:
+                            </label>
 
-<div id="editarBox" style="display:none;">
-        <h3>Buscar película para editar</h3>
+                            <input
+                                type="text"
+                                id="movieDirector"
+                                class="form-control bg-light border-0 shadow-sm"
+                                placeholder="Nombre del director">
+                        </div>
 
-        <input type="text" id="nombreBuscar" placeholder="Nombre de la película">
-        <button onclick="buscarYEditar()">Buscar</button>
-    </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Reseña:
+                            </label>
 
-<script src="js/resena.js"></script>
+                            <textarea
+                                id="movieReview"
+                                class="form-control bg-light border-0 shadow-sm"
+                                rows="4"
+                                placeholder="Escribe aquí la reseña detallada..."></textarea>
+                        </div>
+
+                        <div class="col-12 mb-4">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Actores (separados por coma):
+                            </label>
+
+                            <input
+                                type="text"
+                                id="movieActors"
+                                class="form-control bg-light border-0 shadow-sm"
+                                placeholder="Actor 1, Actor 2, Actor 3">
+                        </div>
+
+                        <!-- IMAGEN -->
+                        <div class="col-12 mb-4">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Imagen de la película:
+                            </label>
+
+                            <input
+                                type="file"
+                                id="movieImage"
+                                class="form-control bg-light border-0 shadow-sm"
+                                accept="image/*">
+
+                            <div
+                                id="currentImagePreview"
+                                class="mt-3"
+                                style="display:none;">
+                            </div>
+
+                            <small class="text-muted">
+                                La imagen será convertida automáticamente a PNG
+                            </small>
+                        </div>
+
+                    </div>
+
+                    <!-- BOTONES -->
+                    <div class="row g-2">
+
+                        <div class="col-6 col-md-4">
+                            <button onclick="guardarResena()" class="btn btn-success w-100 fw-bold shadow-sm">
+                                <i class="bi bi-plus-lg"></i> Crear
+                            </button>
+                        </div>
+
+                        <!-- MODIFICADO -->
+                        <div class="col-6 col-md-4">
+                            <button onclick="guardarCambios()" class="btn btn-primary w-100 fw-bold shadow-sm">
+                                <i class="bi bi-pencil-square"></i> Guardar cambios
+                            </button>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <button onclick="eliminarResena()" class="btn btn-danger w-100 fw-bold shadow-sm">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- BUSCADOR -->
+            <div class="col-12 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+
+                    <h3 class="h5 fw-bold mb-3">
+                        <i class="bi bi-search text-success"></i>
+                        Buscar Película
+                    </h3>
+
+                    <p class="small text-muted">
+                        Busca una película para editar o eliminar.
+                    </p>
+
+                    <div class="input-group mb-3 shadow-sm">
+                        <input
+                            type="text"
+                            id="nombreBuscar"
+                            class="form-control border-0 bg-light"
+                            placeholder="Nombre de la película">
+
+                        <button onclick="buscarYEditar()" class="btn btn-dark" type="button">
+                            Buscar
+                        </button>
+                    </div>
+
+                    <div
+                        id="editarBox"
+                        style="display:none;"
+                        class="alert alert-info py-2 small">
+
+                        <i class="bi bi-info-circle me-2"></i>
+                        Modo edición activado
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-3 bg-white border-top text-center text-muted">
+        <small>&copy; 2026 Facultad de Telemática - Universidad de Colima</small>
+    </footer>
+    
+    <script src="js/sanitizador.js"></script>
+    <script src="js/resena.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

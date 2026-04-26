@@ -1,37 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>servidor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - TLRN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body>
-    <header>
-        <img src="/assets/TLRN_logo.png" width="150" height="75">
-        <nav>
-            <h3>menu de admin</h3>
-            <a href="admin_nu.html">
-                <button type="button">crear nuevo usuario</button>
-            </a>|
-            <a href="">
-                <button type="button">crear nueva reseña</button>
-            </a>|
-            <button type="button" id="logout">cerrar sesion</button>
-        </nav>
+<body class="bg-light d-flex flex-column vh-100">
+
+    <header class="p-3 bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="/assets/TLRN_logo.png" width="130" height="65" alt="Logo" class="img-fluid">
+            <div class="text-end">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill">
+                    <i class="bi bi-shield-lock-fill"></i> Modo Administrador
+                </span>
+            </div>
+        </div>
     </header>
-    <section>
-        <div id="preview_usuarios">
-            
+
+    <main class="container d-flex flex-grow-1 justify-content-center align-items-center my-4">
+        <div class="row w-100 justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-9">
+                
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                    <div class="card-header bg-dark py-3 border-0">
+                        <h1 class="h5 m-0 text-white text-center text-uppercase fw-bold">Menú de Gestión</h1>
+                    </div>
+                    
+                    <div class="card-body p-4 p-md-5">
+                        <div class="row g-3 mb-5 justify-content-center">
+                            <div class="col-md-4">
+                                <a href="admin_nu.html" class="btn btn-outline-success w-100 py-3 d-flex flex-column align-items-center gap-2 shadow-sm rounded-3">
+                                    <i class="bi bi-person-plus-fill fs-3"></i>
+                                    <span class="fw-bold">Nuevo Usuario</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="resena.html" class="btn btn-outline-primary w-100 py-3 d-flex flex-column align-items-center gap-2 shadow-sm rounded-3">
+                                    <i class="bi bi-plus-circle-fill fs-3"></i>
+                                    <span class="fw-bold">Nueva Reseña</span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" id="logout" class="btn btn-outline-danger w-100 py-3 d-flex flex-column align-items-center gap-2 shadow-sm rounded-3">
+                                    <i class="bi bi-box-arrow-right fs-3"></i>
+                                    <span class="fw-bold">Cerrar Sesión</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6 border-end">
+                                <h2 class="h6 fw-bold text-uppercase text-secondary mb-3 border-bottom pb-2">
+                                    <i class="bi bi-people"></i> Usuarios Recientes
+                                </h2>
+                                <div id="preview_usuarios" class="bg-light rounded-3 p-3 min-vh-25 shadow-inner">
+                                    <div class="text-center py-4 text-muted">
+                                        <div class="spinner-border spinner-border-sm text-success" role="status"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h2 class="h6 fw-bold text-uppercase text-secondary mb-3 border-bottom pb-2">
+                                    <i class="bi bi-star"></i> Últimas Reseñas
+                                </h2>
+                                <div id="preview" class="bg-light rounded-3 p-3 min-vh-25 shadow-inner">
+                                    <div class="text-center py-4 text-muted">
+                                        <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div id="preview">
-            
-        </div>
-    </section>
+    </main>
+
+    <footer class="py-3 bg-white border-top text-center text-muted">
+        <small>&copy; 2026 Facultad de Telemática | Universidad de Colima</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/logout.js"></script>
     <script src="js/preview_usuarios.js"></script>
-    <script src="js/preview.js"></script>
+    <script src="js/preview_complet.js"></script>
+    <script src="js/resena_ver.js"></script>
+    <script src="js/sanitizador.js"></script>
     <script src="js/admin_du.js"></script>
     <script src="js/admin_selec_u.js"></script>
-    <script src="js/logout.js"></script>
-    <footer>
-    </footer>
 </body>
 </html>

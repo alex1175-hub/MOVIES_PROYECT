@@ -22,7 +22,12 @@ if (!id_r) {
             }
 
             Rtitulo.textContent = data.movie.name;
-            Rimagen.src = `/imagenes/${data.movie.name}.png`;
+            const nombreLimpio = data.movie.name
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, '-')       
+                .replace(/[^\w-]/g, '');     
+            Rimagen.src = `/imagenes/${nombreLimpio}.png`;
             Rimagen.alt = data.movie.Name;
             Rimagen.width = 180;
             Ranio.textContent = data.movie.year;

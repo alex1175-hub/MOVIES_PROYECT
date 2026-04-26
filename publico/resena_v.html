@@ -1,43 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>servidor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Reseña - TLRN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body>
-    <header>
-        <img src="/assets/TLRN_logo.png" width="150" height="75">
-        <nav>
-            <h3>menu del Reseñista</h3>
-            <button onclick="window.history.back()">
-                Volver atrás
-            </button>
-        </nav>
-    </header>
-    <section>
-        <div id="resena">
-            <h2 id="titulo"></h2>
-            <br>
-            <img src="" id="imagen">
-            <br>
-            <label id="">Creada en el año:</label>
-            <label id="anio"></label>
-            <br>
-            <label id="">Del director</label>
-            <label id="direc"></label>
-            <br>
-            <h5>reseña:</h5>
-            <br>
-            <p id="text"> </p>
-            <br>
-            <label>reparto:</label>
-            <ul id="actor">
+<body class="bg-light d-flex flex-column vh-100">
 
-            </ul>
-            <br>
+    <header class="p-3 bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <img src="/assets/TLRN_logo.png" width="130" height="65" alt="Logo" class="img-fluid">
+            <nav class="d-flex align-items-center gap-3">
+                <h3 class="h6 m-0 text-uppercase fw-bold text-secondary d-none d-md-block">Reseña</h3>
+                <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2">
+                    <i class="bi bi-arrow-left"></i> Volver atrás
+                </button>
+            </nav>
         </div>
-    </section>
-    <script src="js/resena_carga.js"></script>
-    <footer>
+    </header>
+
+    <main class="container flex-grow-1 py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 col-xl-8">
+                
+                <article id="resena" class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+                    <div class="row g-0">
+                        <div class="col-md-5 bg-dark d-flex align-items-center justify-content-center">
+                            <img src="" id="imagen" class="img-fluid w-100" style="object-fit: cover; min-height: 400px;" alt="Poster">
+                        </div>
+                        
+                        <div class="col-md-7">
+                            <div class="card-body p-4 p-md-5">
+                                <h2 id="titulo" class="display-6 fw-bold text-dark mb-3"></h2>
+                                
+                                <div class="mb-4">
+                                    <p class="mb-1 text-muted">
+                                        <i class="bi bi-calendar3 me-2"></i><strong>Año:</strong> <span id="anio"></span>
+                                    </p>
+                                    <p class="mb-1 text-muted">
+                                        <i class="bi bi-person-video2 me-2"></i><strong>Director:</strong> <span id="direc"></span>
+                                    </p>
+                                </div>
+
+                                <hr class="my-4 opacity-10">
+
+                                <h5 class="fw-bold text-uppercase small text-success mb-3">Reseña:</h5>
+                                <p id="text" class="text-secondary lh-lg mb-4"></p>
+
+                                <h5 class="fw-bold text-uppercase small text-success mb-2">Reparto:</h5>
+                                <ul id="actor" class="list-group list-group-flush border-top-0">
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-white border-top text-center text-muted">
+        <div class="container">
+            <small>&copy; 2026 Facultad de Telemática - Universidad de Colima</small>
+        </div>
     </footer>
+
+    <script src="js/resena_carga.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

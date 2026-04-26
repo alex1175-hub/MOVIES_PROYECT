@@ -3,44 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servidor de Reseñas</title>
+    <title>Servidor de Reseñas - TLRN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 </head>
-<body class="bg-light">
+<body class="bg-light d-flex flex-column vh-100">
+
     <header class="p-3 bg-white shadow-sm mb-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <img src="/assets/TLRN_logo.png" width="150" height="75" alt="Logo">
-            <nav class="d-flex gap-2">
-                <h3>menu de usuario</h3>
-                <button type="button" id="logout">cerrar sesion</button>
-                <div id="busqueda">
-                    <form>
-                        <input type="text" name="titulo">
-                        <button type="submit">buscar</button>
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <img src="/assets/TLRN_logo.png" width="130" height="65" alt="Logo" class="img-fluid">
+            
+            <div class="d-flex flex-grow-1 justify-content-center align-items-center gap-3 mx-md-4">
+                <h3 class="h6 m-0 text-uppercase fw-bold text-secondary d-none d-lg-block">Menú de Usuario</h3>
+                
+                <div id="busqueda" class="flex-grow-1" style="max-width: 500px;">
+                    <form class="input-group shadow-sm">
+                        <input type="text" name="titulo" class="form-control border-0 bg-light" placeholder="Buscar película...">
+                        <button class="btn btn-success px-3" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
                     </form>
                 </div>
-            </nav>
+            </div>
+
+            <button type="button" id="logout" class="btn btn-outline-danger btn-sm d-flex align-items-center gap-2 px-3 rounded-pill">
+                <i class="bi bi-box-arrow-right"></i> <span class="d-none d-sm-inline">Cerrar sesión</span>
+            </button>
         </div>
     </header>
 
-    <main class="container">
+    <main class="container flex-grow-1">
         <section class="text-center mb-5">
-            <p class="lead text-muted">Explora todas las reseñas disponibles en nuestra base de datos.</p>
+            <p class="lead text-muted mb-5">Explora todas las reseñas disponibles en nuestro catalogo.</p>
             
-            <div id="preview">
-                <div class="mensaje-espera">
-                    <h3>Reseñas en Preview</h3>
-                    <p>El contenido detallado de las reseñas se cargará aquí...</p>
-                    <div class="spinner-border text-success" role="status"></div>
+            <div id="preview" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 text-start">
+                <div class="col-12 text-center py-5">
+                    <div class="card border-0 shadow-sm rounded-4 p-5 bg-white">
+                        <div class="mensaje-espera">
+                            <h3 class="fw-bold">Reseñas en Preview</h3>
+                            <p class="text-muted">El contenido detallado de las reseñas se cargará aquí...</p>
+                            <div class="spinner-border text-success mt-3" role="status" style="width: 2.5rem; height: 2.5rem;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer class="py-4 bg-white border-top text-center text-muted mt-auto">
+        <div class="container">
+            <small>&copy; 2026 Facultad de Telemática - Universidad de Colima</small>
+        </div>
+    </footer>
+
     <script src="js/preview_complet.js"></script>
+    <script src="js/sanitizador.js"></script>
     <script src="js/resena_ver.js"></script>
     <script src="js/logout.js"></script>
-    <footer>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

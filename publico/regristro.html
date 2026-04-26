@@ -1,26 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>registro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - TLRN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <img src="/assets/TLRN_logo.png" width="150" height="75">
-    </header>
-    <section>
-        <div id="cubo">
-            <form id="form_registro">
-                <h1>login</h1>
-                <label>por favor ingrese su nombre de usuario:</label>
-                <input type="text" name="UN">
-                <label>por favor ingrese su email:</label>
-                <input type="email" name="EM">
-                <label>por favor ingrese su contraseña:</label>
-                <input type="text" name="PW">
-                <button type="submit">registrarse</button>
-            </form>
+<body class="bg-light d-flex flex-column vh-100">
+
+    <header class="p-3 bg-white shadow-sm">
+        <div class="container text-center text-md-start">
+            <img src="/assets/TLRN_logo.png" width="150" height="75" alt="Logo" class="img-fluid">
         </div>
-    </section>
+        <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2">
+            <i class="bi bi-arrow-left"></i> Volver atrás
+        </button>
+    </header>
+
+    <main class="container d-flex flex-grow-1 justify-content-center align-items-center">
+        <div class="row w-100 justify-content-center">
+            <div class="col-11 col-sm-9 col-md-7 col-lg-5 col-xl-4">
+                
+                <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
+                    <form id="form_registro">
+                        <h1 class="h3 mb-4 fw-bold text-center text-uppercase text-dark">
+                            Registro
+                        </h1>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Nombre de usuario:
+                            </label>
+                            <input type="text" name="UN" class="form-control form-control-lg bg-light border-0 shadow-sm" placeholder="Ej. JesusAlberto" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Correo electrónico:
+                            </label>
+                            <input type="email" name="EM" class="form-control form-control-lg bg-light border-0 shadow-sm" placeholder="usuario@ejemplo.com" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label small fw-semibold text-secondary">
+                                Contraseña:
+                            </label>
+                            <input type="password" name="PW" class="form-control form-control-lg bg-light border-0 shadow-sm" placeholder="••••••••" required>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg shadow-sm text-uppercase fw-bold py-3">
+                                Registrarse
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <p class="small text-muted mb-0">
+                                ¿Ya tienes cuenta? 
+                                <a href="login.html" class="text-success fw-bold text-decoration-none">Inicia sesión aquí</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-3 text-center text-muted">
+        <small>&copy; 2026 Facultad de Telemática</small>
+    </footer>
+    <script src="js/sanitizador.js"></script>
     <script type="module" src="js/registro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
