@@ -30,8 +30,8 @@ fetch('/movies')
 
                 // Imagen con clases de Bootstrap
                 const imagen = document.createElement('img');
-                const nombreArchivo = limpiarNombre(movie.name); // 👈 nuevo
-                imagen.src = `imagenes/${nombreArchivo}.png`;    // 👈 cambiado
+                const nombreArchivo = limpiarNombre(movie.name); // nuevo
+                imagen.src = `imagenes/${nombreArchivo}.png`;    // cambiado
 
                 imagen.alt = movie.name;
                 imagen.className = 'card-img-top p-3';
