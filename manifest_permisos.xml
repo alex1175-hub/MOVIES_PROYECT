@@ -1,0 +1,14 @@
+<!-- Pega estas líneas en android/app/src/main/AndroidManifest.xml,
+     DENTRO de <manifest ...> y ANTES de <application ...> -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" android:usesPermissionFlags="neverForLocation" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+
+<!-- ADEMÁS, en la etiqueta <application ...> agrega este atributo (la API usa http en tu red local):
+     android:usesCleartextTraffic="true"
+     Ejemplo: <application android:label="petstation_app" android:usesCleartextTraffic="true" ...> -->

@@ -1,4 +1,4 @@
-name: petcare_smart_app_mk2
+name: petstation_app
 description: Control y monitoreo por Bluetooth LE de la estacion PetStation (ESP32).
 publish_to: 'none'
 version: 1.0.0+1
@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_blue_plus: ^1.32.12
   permission_handler: ^11.3.1
+  http: ^1.2.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

@@ -37,6 +37,8 @@ class PetStationService extends ChangeNotifier {
   String? estadoEstacion;
   DateTime? ultimaActualizacion;
   final List<String> eventos = []; // el más reciente primero
+  /// Último aviso importante de la estación (orden rechazada, dispensado omitido...). La pantalla lo muestra.
+  final ValueNotifier<String?> aviso = ValueNotifier<String?>(null);
 
   BluetoothCharacteristic? _rx;
   StreamSubscription<List<int>>? _txSub;
@@ -167,6 +169,11 @@ class PetStationService extends ChangeNotifier {
         break;
       case topicEventos:
         _log(payload);
+        final u = payload.toUpperCase();
+        if (u.contains('RECHAZAD') || u.contains('OMITIDO') || u.contains('PENDIENTE') || u.contains('INCOMPLETO')) {
+          aviso.value = null; // fuerza el aviso aunque el texto se repita
+          aviso.value = payload.replaceFirst('>>', '').trim();
+        }
         break;
       default:
         _log(linea);
@@ -222,6 +229,11 @@ class PetStationService extends ChangeNotifier {
   /// la estación vuelve a la anterior. Contraseña vacía = red abierta.
   Future<bool> configurarWifi(String ssid, String password) =>
       enviar(topicCfgWifi, jsonEncode({'ssid': ssid, 'password': password}));
+
+  /// Configuración completa de la estación (solo por Bluetooth, lleva contraseñas):
+  /// ssid, password, nombre, usuario_id, api y clave. Todo es opcional salvo que debe venir
+  /// al menos ssid, nombre o (usuario_id + api + clave).
+  Future<bool> configurarEstacion(Map<String, dynamic> datos) => enviar(topicCfgWifi, jsonEncode(datos));
 
   // ---------------------------------------------------------------- utilidades
   String _nombreDe(BluetoothDevice d) => d.platformName.isNotEmpty ? d.platformName : d.remoteId.str;
